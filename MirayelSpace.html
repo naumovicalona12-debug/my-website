@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Альона — Мій світ</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(160deg, #fdf6f0, #e8f0fd);
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Бокове меню */
+        nav {
+            width: 260px;
+            background: #1e2f48;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+
+        nav h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        nav p {
+            font-size: 14px;
+            opacity: 0.8;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        nav a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(5px);
+        }
+
+        /* Контент */
+        .content {
+            margin-left: 300px;
+            padding: 40px;
+            width: calc(100% - 300px);
+        }
+
+        section {
+            background: white;
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.7s forwards;
+        }
+
+        section:nth-of-type(1) { animation-delay: 0.1s; }
+        section:nth-of-type(2) { animation-delay: 0.3s; }
+        section:nth-of-type(3) { animation-delay: 0.5s; }
+        section:nth-of-type(4) { animation-delay: 0.7s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #5a4fdc, #ff6fb5);
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: #5a4fdc;
+            font-size: 26px;
+        }
+
+        img.profile {
+            width: 230px;
+            border-radius: 14px;
+            display: block;
+            margin: 20px auto;
+            border: 3px solid #5a4fdc;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            padding-left: 12px;
+            border-left: 3px solid #5a4fdc;
+            margin: 15px 0;
+        }
+
+        /* Форма */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #bbb;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #5a4fdc;
+            box-shadow: 0 0 8px rgba(90,79,220,0.3);
+            outline: none;
+            transform: scale(1.02);
+        }
+
+        .radio-group input,
+        .checkbox-group input {
+            margin-right: 8px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        .radio-group, .checkbox-group {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            min-height: 120px;
+        }
+
+        /* Кнопки форми */
+        .form-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        button.btn {
+            padding: 12px 28px;
+            background: linear-gradient(to right, #5a4fdc, #ff6fb5);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        button.btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(90,79,220,0.3);
+        }
+
+        /* Кнопка очистити */
+        button.btn-reset {
+            background: #ccc;
+            color: #333;
+        }
+
+        button.btn-reset:hover {
+            background: #bbb;
+            transform: translateY(-2px) scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Альона</h2>
+    <p>Тут живе мій маленький світ 🌙</p>
+
+    <a href="#about">Про мене</a>
+    <a href="#interests">Мої інтереси</a>
+    <a href="#dreams">Мої мрії</a>
+    <a href="#form">Форма зворотного зв’язку</a>
+</nav>
+
+<div class="content">
+
+    <section id="about">
+        <h2>Про мене</h2>
+        <img class="profile" 
+             src="https://i.pinimg.com/1200x/ef/62/ae/ef62aea8521674e85878c5d861d17b4c.jpg" 
+             alt="Фото Альони">
+
+        <p>
+            Привіт! Мене звати Альона — людина, яка одночасно мрійлива, спокійна, 
+            але всередині має цілий всесвіт ідей. Я навчаюся на спеціальності 
+            «Комп’ютерні науки» й поступово відкриваю світ технологій, дизайну 
+            та творчості.
+        </p>
+
+        <p class="quote">«Я хочу жити так, щоб кожен день приносив мені хоч крапельку тепла і сенсу».</p>
+
+        <p>
+            У звичайному житті я:  
+            люблю тишу, затишок, цікаві історії, красиві картинки, музику, що чіпляє душу,  
+            і моменти, коли я створюю щось своє — малюнок, дизайн чи текст.
+        </p>
+    </section>
+
+    <section id="interests">
+        <h2>Мої інтереси</h2>
+        <p><b>📘 Читання:</b> манга, манхва, маньхуа, книги, фанфіки.</p>
+        <p><b>🎨 Малювання:</b> це те, що приносить мені справжнє задоволення і заспокоює.</p>
+        <p><b>💻 IT:</b> вебсайти, HTML/CSS, основи дизайну, створення інтерфейсів.</p>
+        <p><b>🎧 Музика:</b> слухаю різне — все залежить від настрою.</p>
+        <p><b>🌏 Азійська культура:</b> аніме, дорами, традиції, міста, архітектура.</p>
+    </section>
+
+    <section id="dreams">
+        <h2>Мої мрії</h2>
+
+        <p>
+            Я хочу знайти справу, яка буде приносити мені і гроші, і задоволення.  
+            Хочу мати просторий красивий дім, подорожувати, допомагати іншим,  
+            розвиватися й відчувати, що моє життя — не даремне.
+        </p>
+
+        <p>
+            Мрію стати хорошим дизайнером або айтішницею, мати власні проєкти,  
+            і зрештою — жити у місці, де мені буде по-справжньому затишно.
+        </p>
+    </section>
+
+    <section id="form">
+        <h2>Форма зворотного зв’язку</h2>
+
+        <form>
+            <!-- Текстові поля -->
+            <label>Ваше ім’я:</label>
+            <input type="text" placeholder="Введіть ім'я">
+
+            <label>Email:</label>
+            <input type="email" placeholder="example@gmail.com">
+
+            <label>Номер телефону:</label>
+            <input type="tel" placeholder="+380962599640">
+
+            <!-- Select -->
+            <label>Звідки ви дізналися про мене?</label>
+            <select>
+                <option>Instagram</option>
+                <option>Telegram</option>
+                <option>Знайомі</option>
+                <option>Інше</option>
+            </select>
+
+            <!-- Radio -->
+            <label>Виберіть тип звернення:</label>
+            <div class="radio-group">
+                <input type="radio" name="type"> Співпраця<br>
+                <input type="radio" name="type"> Питання<br>
+                <input type="radio" name="type"> Пропозиція
+            </div>
+
+            <!-- Checkbox -->
+            <label>Що вас цікавить?</label>
+            <div class="checkbox-group">
+                <input type="checkbox"> Створення сайту<br>
+                <input type="checkbox"> Дизайн<br>
+                <input type="checkbox"> Програмування<br>
+                <input type="checkbox"> Інше
+            </div>
+
+            <!-- Textarea -->
+            <label>Ваше повідомлення:</label>
+            <textarea placeholder="Напишіть щось..."></textarea>
+
+            <!-- Buttons -->
+            <div class="form-buttons">
+                <button type="submit" class="btn">Надіслати</button>
+                <button type="reset" class="btn btn-reset">Очистити</button>
+            </div>
+        </form>
+    </section>
+
+</div>
+
+</body>
+</html>
